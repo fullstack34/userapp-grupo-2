@@ -45,3 +45,21 @@ body {
   button:hover {
     background-color: #ccc;
   }
+
+  a {
+    display: inline-block;
+    padding: 5px ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    cursor: pointer;
+    background-color: #fff;
+    color:purple;
+    margin-top: 15px;
+  }
+  
+  a:hover {
+    background-color: #ccc;
+  }
