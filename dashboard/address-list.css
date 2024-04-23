@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F9FA; /* Branco Nubank */
+    color: #333; /* Cinza escuro Nubank */
+}
+
+header {
+    background-color: #9C27B0; /* Roxo Nubank */
+    color: #fff; /* Branco Nubank */
+    padding: 20px;
+    display: flex; /* Layout flexbox para o header */
+    justify-content: space-between; /* Distribuir espaço entre itens */
+    align-items: center; /* Alinhar itens verticalmente */
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 24px; /* Tamanho de fonte Nubank */
+    font-weight: bold; /* Negrito Nubank */
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Layout flexbox para o menu */
+}
+
+nav li {
+    margin: 0 10px; /* Espaçamento entre itens do menu */
+}
+
+nav a {
+    color: #fff; /* Branco Nubank */
+    text-decoration: none;
+    font-size: 18px; /* Tamanho de fonte Nubank */
+    font-weight: bold; /* Negrito Nubank */
+}
+
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Estilos básicos para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+h2 {
+    text-align: center;
+}

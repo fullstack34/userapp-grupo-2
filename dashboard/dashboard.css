@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F9FA; /* Branco Nubank */
+    color: #333; /* Cinza escuro Nubank */
+}
+
+header {
+    background-color: #9C27B0; /* Roxo Nubank */
+    color: #fff; /* Branco Nubank */
+    padding: 20px;
+    display: flex; /* Layout flexbox para o header */
+    justify-content: space-between; /* Distribuir espaço entre itens */
+    align-items: center; /* Alinhar itens verticalmente */
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 24px; /* Tamanho de fonte Nubank */
+    font-weight: bold; /* Negrito Nubank */
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Layout flexbox para o menu */
+}
+
+nav li {
+    margin: 0 10px; /* Espaçamento entre itens do menu */
+}
+
+nav a {
+    color: #fff; /* Branco Nubank */
+    text-decoration: none;
+    font-size: 18px; /* Tamanho de fonte Nubank */
+    font-weight: bold; /* Negrito Nubank */
+}
+
+main {
+    padding: 20px;
+    
+}
+
+section {
+    background-color: #fff; /* Branco Nubank */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil Nubank */
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px; /* Tamanho de fonte Nubank */
+    font-weight: bold; /* Negrito Nubank */
+}
+
+/* Estilos adicionais para seções (opcional) */
+.secao-1, .secao-3 {
+    border-left: 5px solid #9C27B0; /* Borda lateral roxa na Seção 1 */
+}
+
+.secao-2, .secao-4 {
+    border-left: 5px solid #673AB7; /* Borda lateral azul na Seção 2 */
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
