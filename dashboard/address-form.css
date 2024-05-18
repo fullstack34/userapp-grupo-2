@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F9FA; /* Branco Nubank */
+    color: #333; /* Cinza escuro Nubank */
+}
+
+header {
+    background-color: #9C27B0; /* Roxo Nubank */
+    color: #fff; /* Branco Nubank */
+    padding: 20px;
+    display: flex; /* Layout flexbox para o header */
+    justify-content: space-between; /* Distribuir espaço entre itens */
+    align-items: center; /* Alinhar itens verticalmente */
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 24px; /* Tamanho de fonte Nubank */
+    font-weight: bold; /* Negrito Nubank */
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Layout flexbox para o menu */
+}
+
+nav li {
+    margin: 0 10px; /* Espaçamento entre itens do menu */
+}
+
+nav a {
+    color: #fff; /* Branco Nubank */
+    text-decoration: none;
+    font-size: 18px; /* Tamanho de fonte Nubank */
+    font-weight: bold; /* Negrito Nubank */
+}
+
+
+
+/* Estilos adicionais para seções (opcional) */
+.secao-1, .secao-3 {
+    border-left: 5px solid #9C27B0; /* Borda lateral roxa na Seção 1 */
+}
+
+.secao-2, .secao-4 {
+    border-left: 5px solid #673AB7; /* Borda lateral azul na Seção 2 */
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Estilos específicos para o formulário */
+.container {
+    background-color: #fff; /* Branco Nubank */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil Nubank */
+    width: 400px; /* Largura do formulário */
+    max-width: 90%; /* Limitar a largura em telas menores */
+    margin: 0 auto; /* Centralizar horizontalmente */
+}
+
+
+.campo {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Cinza escuro Nubank */
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc; /* Cinza claro Nubank */
+    border-radius: 4px;
+    font-size: 16px; /* Tamanho de fonte Nubank */
+}
+
+button {
+    background-color: #9C27B0; /* Roxo Nubank */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Tamanho de fonte Nubank */
+    font-weight: bold; /* Negrito Nubank */
+}
+
+button:hover {
+    background-color: #82229A; /* Roxo Nubank mais escuro */
+}
