@@ -1,65 +1,77 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color:purple;
-    margin: 0 auto;
-    text-align: center;
-    color: #fff;
-    margin-top: 50;
-    padding: 150px;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  form {
-    width: 300px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #fff;
-    color:purple;
-    border: none;
-    border-radius: 5px;
-  }
+  font-family: Arial, sans-serif;
+  background-color:purple;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  margin-top: 50;
+  padding: 150px;
+}
 
-  button:hover {
-    background-color: #ccc;
-  }
+h1 {
+  text-align: center;
+}
 
-  a {
-    display: inline-block;
-    padding: 5px ;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #000;
-    background-color: #fff;
-    cursor: pointer;
-    background-color: #fff;
-    color:purple;
-    margin-top: 15px;
-  }
-  
-  a:hover {
-    background-color: #ccc;
-  }
+form {
+  width: 300px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+ font-size: 16px;
+  margin: 0;
+  display: inline-block;
+  padding: 5px ;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: #fff;
+  cursor: pointer;
+  color:purple;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #ccc;
+}
+
+a {
+  display: inline-block;
+  padding: 5px ;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  cursor: pointer;
+  background-color: #fff;
+  color:purple;
+  margin-top: 15px;
+}
+
+a:hover {
+  background-color: #ccc;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+  display: block;
+}

@@ -7,19 +7,59 @@
 </head>
 <body>
   <h1>Acesse Sua Conta</h1>
-  <form action="#">
-    <label for="username">Email:</label>
-    <input type="email" placeholder="Email">
+  <form id="login-form" action="#">
+    <label for="email">Email:</label>
+    <input type="email" placeholder="Email" id="email">
+    <span id="email-error" class="error-message"></span>
     <br>
     <label for="password">Senha:</label>
-    <input type="password" placeholder="Senha">
+    <input type="password" placeholder="Senha" id="password">
+    <span id="password-error" class="error-message"></span>
     <br>
-    <a href="dashboard/index.html">Entrar</a>
+    <button type="submit">Entrar</button>
     <a href="create-account.html">Criar Conta</a>
   </form>
   <div class="container-2">
     <a href="forgot-password.html">Esqueci minha senha?</a>
-    </div>
+  </div>
 
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+  
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+  
+    let valid = true;
+  
+    emailError.textContent = '';
+    passwordError.textContent = '';
+  
+    if (!emailInput.value.trim()) {
+      emailError.textContent = 'Campo obrigatório.';
+      valid = false;
+    } else if (!validateEmail(emailInput.value.trim())) {
+      emailError.textContent = 'Por favor, insira um endereço de e-mail válido.';
+      valid = false;
+    }
+  
+    if (!passwordInput.value.trim()) {
+      passwordError.textContent = 'Campo obrigatório.';
+      valid = false;
+    }
+  
+    if (valid) {
+      window.location.href = 'dashboard/index.html';
+    }
+  });
+  
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  </script>
 </body>
 </html>
