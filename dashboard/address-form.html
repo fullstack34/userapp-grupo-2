@@ -17,20 +17,23 @@
         </nav>
     </header>
 
-    <form action="#">
+    <form id="address-form" action="#">
         <div class="campo">
             <label for="cep">CEP:</label>
             <input type="text" id="cep" name="cep" placeholder="Digite seu CEP">
+            <span id="cep-error" class="error-message"></span>
         </div>
 
         <div class="campo">
             <label for="rua">Rua:</label>
             <input type="text" id="rua" name="rua" placeholder="Digite o nome da rua">
+            <span id="rua-error" class="error-message"></span>
         </div>
 
         <div class="campo">
             <label for="numero">Número:</label>
             <input type="number" id="numero" name="numero" placeholder="Digite o número da casa/apartamento">
+            <span id="numero-error" class="error-message"></span>
         </div>
 
         <div class="campo">
@@ -41,20 +44,95 @@
         <div class="campo">
             <label for="bairro">Bairro:</label>
             <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do bairro">
+            <span id="bairro-error" class="error-message"></span>
         </div>
 
         <div class="campo">
             <label for="cidade">Cidade:</label>
             <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade">
+            <span id="cidade-error" class="error-message"></span>
         </div>
 
         <div class="campo">
             <label for="uf">UF:</label>
             <input type="text" id="uf" name="uf" placeholder="Digite o nome da cidade">
+            <span id="uf-error" class="error-message"></span>
         </div>
 
         <button type="submit">Cadastrar Endereço</button>
     </form>
 
+    <script>
+        document.getElementById('address-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const cepInput = document.getElementById('cep');
+    const ruaInput = document.getElementById('rua');
+    const numeroInput = document.getElementById('numero');
+    const bairroInput = document.getElementById('bairro');
+    const cidadeInput = document.getElementById('cidade');
+    const ufInput = document.getElementById('uf');
+    const cepError = document.getElementById('cep-error');
+    const ruaError = document.getElementById('rua-error');
+    const numeroError = document.getElementById('numero-error');
+    const bairroError = document.getElementById('bairro-error');
+    const cidadeError = document.getElementById('cidade-error');
+    const ufError = document.getElementById('uf-error');
+
+    let valid = true;
+
+    cepError.textContent = '';
+    ruaError.textContent = '';
+    numeroError.textContent = '';
+    bairroError.textContent = '';
+    cidadeError.textContent = '';
+    ufError.textContent = '';
+
+    if (!cepInput.value.trim()) {
+        cepError.textContent = 'Campo obrigatório.';
+        valid = false;
+    } else if (cepInput.value.trim().length < 8) {
+        cepError.textContent = 'O CEP deve conter no mínimo 8 caracteres.';
+        valid = false;
+    }
+
+    if (!ruaInput.value.trim()) {
+        ruaError.textContent = 'Campo obrigatório.';
+        valid = false;
+    }
+
+    if (!numeroInput.value.trim()) {
+        numeroError.textContent = 'Campo obrigatório.';
+        valid = false;
+    }
+
+    if (!bairroInput.value.trim()) {
+        bairroError.textContent = 'Campo obrigatório.';
+        valid = false;
+    }
+
+    if (!cidadeInput.value.trim()) {
+        cidadeError.textContent = 'Campo obrigatório.';
+        valid = false;
+    }
+
+    if (!ufInput.value.trim()) {
+        ufError.textContent = 'Campo obrigatório.';
+        valid = false;
+    }
+
+ 
+});
+
+// Máscara para o campo de CEP
+document.getElementById('cep').addEventListener('input', function(event) {
+    let cep = event.target.value.replace(/\D/g, '');
+    if (cep.length > 8) {
+        cep = cep.slice(0, 8);
+    }
+    event.target.value = cep.replace(/^(\d{5})(\d)/, '$1-$2');
+});
+
+    </script>
 </body>
 </html>
