@@ -7,15 +7,12 @@
     <link rel="stylesheet" href="address-form.css">
 </head>
 <body>
-    <header>
-        <h1><a href="index.html">APPUSER</a></h1>
-        <nav>
-            <ul>
-                <li><a href="address-form.html">Cadastrar endereço</a></li>
-                <li><a href="address-list.html">Listar endereços</a></li>
-            </ul>
-        </nav>
-    </header>
+    <script type="module">
+        import { loadHeader } from './header.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHeader();
+        });
+    </script>
 
     <form id="address-form" action="#">
         <div class="campo">
@@ -63,76 +60,111 @@
     </form>
 
     <script>
-        document.getElementById('address-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+        document.addEventListener('DOMContentLoaded', () => {
+            const cepInput = document.getElementById('cep');
+            cepInput.addEventListener('blur', () => {
+                const cep = cepInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+                if (cep.length === 8) {
+                    fetchAddressByCep(cep);
+                }
+            });
 
-    const cepInput = document.getElementById('cep');
-    const ruaInput = document.getElementById('rua');
-    const numeroInput = document.getElementById('numero');
-    const bairroInput = document.getElementById('bairro');
-    const cidadeInput = document.getElementById('cidade');
-    const ufInput = document.getElementById('uf');
-    const cepError = document.getElementById('cep-error');
-    const ruaError = document.getElementById('rua-error');
-    const numeroError = document.getElementById('numero-error');
-    const bairroError = document.getElementById('bairro-error');
-    const cidadeError = document.getElementById('cidade-error');
-    const ufError = document.getElementById('uf-error');
+            function fetchAddressByCep(cep) {
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            document.getElementById('rua').value = data.logradouro;
+                            document.getElementById('bairro').value = data.bairro;
+                            document.getElementById('cidade').value = data.localidade;
+                            document.getElementById('uf').value = data.uf;
+                        } else {
+                            alert('CEP não encontrado.');
+                            clearAddressFields();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao consultar a API:', error);
+                        alert('Erro ao consultar a API.');
+                        clearAddressFields();
+                    });
+            }
 
-    let valid = true;
+            function clearAddressFields() {
+                document.getElementById('rua').value = '';
+                document.getElementById('bairro').value = '';
+                document.getElementById('cidade').value = '';
+                document.getElementById('uf').value = '';
+            }
 
-    cepError.textContent = '';
-    ruaError.textContent = '';
-    numeroError.textContent = '';
-    bairroError.textContent = '';
-    cidadeError.textContent = '';
-    ufError.textContent = '';
+            document.getElementById('address-form').addEventListener('submit', function(event) {
+                event.preventDefault();
 
-    if (!cepInput.value.trim()) {
-        cepError.textContent = 'Campo obrigatório.';
-        valid = false;
-    } else if (cepInput.value.trim().length < 8) {
-        cepError.textContent = 'O CEP deve conter no mínimo 8 caracteres.';
-        valid = false;
-    }
+                const cepInput = document.getElementById('cep');
+                const ruaInput = document.getElementById('rua');
+                const numeroInput = document.getElementById('numero');
+                const bairroInput = document.getElementById('bairro');
+                const cidadeInput = document.getElementById('cidade');
+                const ufInput = document.getElementById('uf');
+                const cepError = document.getElementById('cep-error');
+                const ruaError = document.getElementById('rua-error');
+                const numeroError = document.getElementById('numero-error');
+                const bairroError = document.getElementById('bairro-error');
+                const cidadeError = document.getElementById('cidade-error');
+                const ufError = document.getElementById('uf-error');
 
-    if (!ruaInput.value.trim()) {
-        ruaError.textContent = 'Campo obrigatório.';
-        valid = false;
-    }
+                let valid = true;
 
-    if (!numeroInput.value.trim()) {
-        numeroError.textContent = 'Campo obrigatório.';
-        valid = false;
-    }
+                cepError.textContent = '';
+                ruaError.textContent = '';
+                numeroError.textContent = '';
+                bairroError.textContent = '';
+                cidadeError.textContent = '';
+                ufError.textContent = '';
 
-    if (!bairroInput.value.trim()) {
-        bairroError.textContent = 'Campo obrigatório.';
-        valid = false;
-    }
+                if (!cepInput.value.trim()) {
+                    cepError.textContent = 'Campo obrigatório.';
+                    valid = false;
+                } else if (cepInput.value.trim().length < 8) {
+                    cepError.textContent = 'O CEP deve conter no mínimo 8 caracteres.';
+                    valid = false;
+                }
 
-    if (!cidadeInput.value.trim()) {
-        cidadeError.textContent = 'Campo obrigatório.';
-        valid = false;
-    }
+                if (!ruaInput.value.trim()) {
+                    ruaError.textContent = 'Campo obrigatório.';
+                    valid = false;
+                }
 
-    if (!ufInput.value.trim()) {
-        ufError.textContent = 'Campo obrigatório.';
-        valid = false;
-    }
+                if (!numeroInput.value.trim()) {
+                    numeroError.textContent = 'Campo obrigatório.';
+                    valid = false;
+                }
 
- 
-});
+                if (!bairroInput.value.trim()) {
+                    bairroError.textContent = 'Campo obrigatório.';
+                    valid = false;
+                }
 
-// Máscara para o campo de CEP
-document.getElementById('cep').addEventListener('input', function(event) {
-    let cep = event.target.value.replace(/\D/g, '');
-    if (cep.length > 8) {
-        cep = cep.slice(0, 8);
-    }
-    event.target.value = cep.replace(/^(\d{5})(\d)/, '$1-$2');
-});
+                if (!cidadeInput.value.trim()) {
+                    cidadeError.textContent = 'Campo obrigatório.';
+                    valid = false;
+                }
 
+                if (!ufInput.value.trim()) {
+                    ufError.textContent = 'Campo obrigatório.';
+                    valid = false;
+                }
+            });
+
+            // Máscara para o campo de CEP
+            document.getElementById('cep').addEventListener('input', function(event) {
+                let cep = event.target.value.replace(/\D/g, '');
+                if (cep.length > 8) {
+                    cep = cep.slice(0, 8);
+                }
+                event.target.value = cep.replace(/^(\d{5})(\d)/, '$1-$2');
+            });
+        });
     </script>
 </body>
 </html>

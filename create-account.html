@@ -86,6 +86,15 @@
       }
 
       if (valid) {
+        // Salvar os dados no localStorage
+        const userData = {
+          nome: nomeInput.value.trim(),
+          sobrenome: sobrenomeInput.value.trim(),
+          email: emailInput.value.trim(),
+          senha: senhaInput.value.trim()
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
+
         // Redirecionar para a tela de login
         window.location.href = 'login.html';
       }
