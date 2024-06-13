@@ -12,10 +12,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadHeader();
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedIn = localStorage.getItem('logged-in');
+            if (!loggedIn || loggedIn !== 'true') {
+                window.location.href = 'login.html'; // Redireciona para o login.html
+            }
+        });
     </script>
 
     <form id="address-form" action="#">
-        <div class="campo">
+        <div class="campo" style="margin-top: 10px;">
             <label for="cep">CEP:</label>
             <input type="text" id="cep" name="cep" placeholder="Digite seu CEP">
             <span id="cep-error" class="error-message"></span>
@@ -52,7 +59,7 @@
 
         <div class="campo">
             <label for="uf">UF:</label>
-            <input type="text" id="uf" name="uf" placeholder="Digite o nome da cidade">
+            <input type="text" id="uf" name="uf" placeholder="Digite a UF">
             <span id="uf-error" class="error-message"></span>
         </div>
 
@@ -103,6 +110,7 @@
                 const cepInput = document.getElementById('cep');
                 const ruaInput = document.getElementById('rua');
                 const numeroInput = document.getElementById('numero');
+                const complementoInput = document.getElementById('complemento');
                 const bairroInput = document.getElementById('bairro');
                 const cidadeInput = document.getElementById('cidade');
                 const ufInput = document.getElementById('uf');
@@ -153,6 +161,25 @@
                 if (!ufInput.value.trim()) {
                     ufError.textContent = 'Campo obrigatório.';
                     valid = false;
+                }
+
+                if (valid) {
+                    const endereco = {
+                        cep: cepInput.value.trim(),
+                        rua: ruaInput.value.trim(),
+                        numero: numeroInput.value.trim(),
+                        complemento: complementoInput.value.trim(),
+                        bairro: bairroInput.value.trim(),
+                        cidade: cidadeInput.value.trim(),
+                        uf: ufInput.value.trim()
+                    };
+
+                    let enderecos = JSON.parse(localStorage.getItem('enderecos')) || [];
+                    enderecos.push(endereco);
+                    localStorage.setItem('enderecos', JSON.stringify(enderecos));
+
+                    alert('Endereço cadastrado com sucesso!');
+                    document.getElementById('address-form').reset();
                 }
             });
 

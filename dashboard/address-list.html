@@ -12,11 +12,68 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadHeader();
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedIn = localStorage.getItem('logged-in');
+            if (!loggedIn || loggedIn !== 'true') {
+                window.location.href = 'login.html'; // Redireciona para o login.html
+            }
+
+            loadAddresses();
+        });
+
+        function loadAddresses() {
+            const enderecos = JSON.parse(localStorage.getItem('enderecos')) || [];
+            const tbody = document.querySelector('#tabelaEnderecos tbody');
+            tbody.innerHTML = '';
+
+            enderecos.forEach((endereco, index) => {
+                const tr = document.createElement('tr');
+
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${endereco.cep}</td>
+                    <td>${endereco.rua}</td>
+                    <td>${endereco.numero}</td>
+                    <td>${endereco.complemento}</td>
+                    <td>${endereco.bairro}</td>
+                    <td>${endereco.cidade}</td>
+                    <td>${endereco.uf}</td>
+                    <td>
+                        <button onclick="editAddress(${index})">Editar</button>
+                        <button onclick="deleteAddress(${index})">Excluir</button>
+                    </td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        window.editAddress = function(index) {
+            const enderecos = JSON.parse(localStorage.getItem('enderecos'));
+            const endereco = enderecos[index];
+
+            document.getElementById('cep').value = endereco.cep;
+            document.getElementById('rua').value = endereco.rua;
+            document.getElementById('numero').value = endereco.numero;
+            document.getElementById('complemento').value = endereco.complemento;
+            document.getElementById('bairro').value = endereco.bairro;
+            document.getElementById('cidade').value = endereco.cidade;
+            document.getElementById('uf').value = endereco.uf;
+
+            enderecos.splice(index, 1);
+            localStorage.setItem('enderecos', JSON.stringify(enderecos));
+        }
+
+        window.deleteAddress = function(index) {
+            const enderecos = JSON.parse(localStorage.getItem('enderecos'));
+            enderecos.splice(index, 1);
+            localStorage.setItem('enderecos', JSON.stringify(enderecos));
+            loadAddresses();
+        }
     </script>
- 
 
-
-    <h2>Tabela de Endereços</h1>
+    <h2>Tabela de Endereços</h2>
 
     <table id="tabelaEnderecos">
         <thead>
@@ -33,121 +90,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>00000-001</td>
-                <td>Rua Exemplo 1</td>
-                <td>1</td>
-                <td>Apartamento 1</td>
-                <td>Bairro 1</td>
-                <td>Fortaleza</td>
-                <td>CE</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>00000-002</td>
-                <td>Rua Exemplo 2</td>
-                <td>2</td>
-                <td>Apartamento 2</td>
-                <td>Bairro 2</td>
-                <td>Fortaleza</td>
-                <td>CE</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>00000-003</td>
-                <td>Rua Exemplo 3</td>
-                <td>3</td>
-                <td>Apartamento 3</td>
-                <td>Bairro 3</td>
-                <td>Fortaleza</td>
-                <td>CE</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>00000-004</td>
-                <td>Rua Exemplo 4</td>
-                <td>4</td>
-                <td>Apartamento 4</td>
-                <td>Bairro 4</td>
-                <td>Fortaleza</td>
-                <td>CE</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>00000-005</td>
-                <td>Rua Exemplo 5</td>
-                <td>5</td>
-                <td>Apartamento 5</td>
-                <td>Bairro 5</td>
-                <td>Fortaleza</td>
-                <td>CE</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>00000-006</td>
-                <td>Rua Exemplo 6</td>
-                <td>6</td>
-                <td>Apartamento 6</td>
-                <td>Bairro 6</td>
-                <td>Fortaleza</td>
-                <td>CE</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>00000-007</td>
-                <td>Rua Exemplo 7</td>
-                <td>7</td>
-                <td>Apartamento 7</td>
-                <td>Bairro 7</td>
-                <td>Fortaleza</td>
-                <td>CE</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-            </tr>
+            <!-- Endereços serão carregados aqui -->
         </tbody>
     </table>
-
-    
-
-
-</body>
-</html>
-
-
-    
-
-    
-
-    
-
-  
-
 </body>
 </html>
