@@ -16,7 +16,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const loggedIn = localStorage.getItem('logged-in');
             if (!loggedIn || loggedIn !== 'true') {
-                window.location.href = 'login.html'; // Redireciona para o login.html
+                window.location.href = '../login.html'; // Redireciona para o login.html
             }
 
             loadAddresses();
