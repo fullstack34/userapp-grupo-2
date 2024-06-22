@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <header>
-        <h1><a href="index.html">APPUSER</a></h1>
-        <nav>
-            <ul>
-                <li><a href="address-form.html">Cadastrar endereço</a></li>
-                <li><a href="address-list.html">Listar endereços</a></li>
-            </ul>
-        </nav>
-    </header>
+    <script type="module">
+        import { loadHeader } from './header.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHeader();
+        });
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedIn = localStorage.getItem('logged-in');
+            if (!loggedIn || loggedIn !== 'true') {
+                window.location.href = '../login.html'; // Redireciona para o login.html
+            }
+        });
+    </script>
     <main>
         <section class="secao-1">
             <h2>Total de usuários: 50</h2>
